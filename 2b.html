@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Odd or Even Checker</title>
+</head>
+
+<body>
+    <button onclick="checkOddOrEven()">Check Odd or Even</button>
+
+    <script>
+        const checkOddOrEven = () => {
+            // Input the number using prompt
+            var inputNumber = prompt("Enter a number:");
+
+            // Convert the input string to a number
+            var num = parseInt(inputNumber);
+
+            if (isNaN(num)) {
+                alert("Please enter a valid number.");
+            } else {
+                // Check if the number is odd or even
+                if (num % 2 === 0) {
+                    alert(num + " is an even number.");
+                } else {
+                    alert(num + " is an odd number.");
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

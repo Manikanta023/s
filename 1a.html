@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum Calculator</title>
+</head>
+<body>
+    <button onclick="calculateSum()">Calculate Sum</button>
+
+    <script>
+        function calculateSum() {
+            // Input the first number using prompt
+            var num1 = prompt("Enter the first number:");
+
+            // Convert the input string to a number
+            num1 = parseFloat(num1);
+
+            // Input the second number using prompt
+            var num2 = prompt("Enter the second number:");
+
+            // Convert the input string to a number
+            num2 = parseFloat(num2);
+
+            // Calculate the sum
+            var sum = num1 + num2;
+
+            // Display the sum using an alert
+            alert("The sum of " + num1 + " and " + num2 + " is: " + sum);
+        }
+    </script>
+</body>
+</html>

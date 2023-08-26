@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map Operations</title>
+</head>
+
+<body>
+    <label for="keyInput">Enter a key:</label>
+    <input type="text" id="keyInput">
+    <br>
+    <label for="valueInput">Enter a value:</label>
+    <input type="text" id="valueInput">
+    <br>
+    <button id="storeButton">Store Value</button>
+    <button id="retrieveButton">Retrieve Value</button>
+    <br>
+    <p>Stored Key-Value Pairs:</p>
+    <ul id="storedPairsList"></ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const storeButton = document.getElementById("storeButton");
+            const retrieveButton = document.getElementById("retrieveButton");
+            const storedPairsList = document.getElementById("storedPairsList");
+            const valueMap = new Map();
+
+            storeButton.addEventListener("click", () => {
+                const key = keyInput.value;
+                const value = valueInput.value;
+
+                if (key && value) {
+                    valueMap.set(key, value);
+                    updateStoredPairsList();
+                }
+            });
+
+            retrieveButton.addEventListener("click", () => {
+                const key = keyInput.value;
+                const value = valueMap.get(key);
+
+                if (value !== undefined) {
+                    alert("Value for key " + key + ": " + value);
+                } else {
+                    alert("Value not found for key " + key);
+                }
+            });
+
+            function updateStoredPairsList() {
+                storedPairsList.innerHTML = "";
+                valueMap.forEach((value, key) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${key}: ${value}`;
+                    storedPairsList.appendChild(listItem);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

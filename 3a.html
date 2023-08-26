@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vowel Count</title>
+</head>
+
+<body>
+    <button onclick="countVowels()">Count Vowels</button>
+
+    <script>
+        const countVowels = () => {
+            // Input the string using prompt
+            var inputString = prompt("Enter a string:");
+
+            // Convert the string to lowercase to make vowel matching case-insensitive
+            inputString = inputString.toLowerCase();
+
+            // Define the vowels
+            const vowels = "aeiou";
+
+            // Initialize a count for vowels
+            var vowelCount = 0;
+
+            // Loop through the string and count the vowels
+            for (var i = 0; i < inputString.length; i++) {
+                if (vowels.includes(inputString[i])) {
+                    vowelCount++;
+                }
+            }
+
+            // Display the vowel count using an alert
+            alert("Number of vowels in the string: " + vowelCount);
+        };
+    </script>
+</body>
+
+</html>

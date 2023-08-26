@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number Reversal</title>
+</head>
+
+<body>
+    <button onclick="reverseNumber()">Reverse Number</button>
+
+    <script>
+        const reverseNumber = () => {
+            // Input the number using prompt
+            var inputNumber = prompt("Enter a number:");
+
+            // Convert the input string to a number
+            var num = parseInt(inputNumber);
+
+            // Convert the number to a string, split, reverse, and join to reverse its digits
+            var reversedNum = num.toString().split('').reverse().join('');
+
+            // Display the reversed number using an alert
+            alert("Reversed number: " + reversedNum);
+        }
+    </script>
+</body>
+
+</html>

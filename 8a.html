@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>String to Array of Words</title>
+</head>
+
+<body>
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString">
+    <br>
+    <button id="splitButton">Split and Convert</button>
+    <br>
+    <p>Array of Words: <span id="wordsOutput"></span></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const splitButton = document.getElementById("splitButton");
+            const wordsOutput = document.getElementById("wordsOutput");
+
+            splitButton.addEventListener("click", () => {
+                const inputString = document.getElementById("inputString").value;
+                const wordsArray = splitStringIntoWords(inputString);
+                wordsOutput.textContent = wordsArray.join(', ');
+            });
+
+            function splitStringIntoWords(str) {
+                // Remove leading and trailing spaces and split by spaces
+                return str.trim().split(" ");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Set Operations</title>
+</head>
+
+<body>
+    <label for="valueInput">Enter a value:</label>
+    <input type="text" id="valueInput">
+    <br>
+    <button id="storeButton">Store Value</button>
+    <button id="retrieveButton">Retrieve Value</button>
+    <br>
+    <p>Stored Values: <span id="storedValuesOutput"></span></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const storeButton = document.getElementById("storeButton");
+            const retrieveButton = document.getElementById("retrieveButton");
+            const storedValuesOutput = document.getElementById("storedValuesOutput");
+            const valueSet = new Set();
+
+            storeButton.addEventListener("click", () => {
+                const inputValue = document.getElementById("valueInput").value;
+                valueSet.add(inputValue);
+                updateStoredValuesOutput();
+            });
+
+            retrieveButton.addEventListener("click", () => {
+                const inputValue = document.getElementById("valueInput").value;
+                if (valueSet.has(inputValue)) {
+                    alert("Value " + inputValue + " exists in the set.");
+                } else {
+                    alert("Value " + inputValue + " does not exist in the set.");
+                }
+            });
+
+            function updateStoredValuesOutput() {
+                storedValuesOutput.textContent = [...valueSet].join(", ");
+            }
+        });
+    </script>
+</body>
+
+</html>

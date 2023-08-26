@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jump Search</title>
+</head>
+
+<body>
+    <label for="keyInput">Enter the key:</label>
+    <input type="number" id="keyInput">
+    <br>
+    <label for="numbersInput">Enter a list of numbers (comma-separated):</label>
+    <input type="text" id="numbersInput">
+    <br>
+    <button id="searchButton">Perform Jump Search</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchButton = document.getElementById("searchButton");
+
+            searchButton.addEventListener("click", () => {
+                const key = parseInt(document.getElementById("keyInput").value);
+                const numbersInput = document.getElementById("numbersInput").value;
+                const numbers = numbersInput.split(',').map(num => parseInt(num));
+
+                if (isNaN(key) || numbers.some(isNaN)) {
+                    alert("Please enter valid numbers.");
+                    return;
+                }
+
+                const result = jumpSearch(numbers, key);
+
+                if (result !== -1) {
+                    alert("Key " + key + " found at index " + result);
+                } else {
+                    alert("Key " + key + " not found.");
+                }
+            });
+
+            function jumpSearch(arr, key) {
+                const n = arr.length;
+                const step = Math.sqrt(n);
+                let prev = 0;
+
+                while (arr[Math.min(step, n) - 1] < key) {
+                    prev = step;
+                    step += Math.sqrt(n);
+                    if (prev >= n) {
+                        return -1;
+                    }
+                }
+
+                while (arr[prev] < key) {
+                    prev++;
+
+                    if (prev === Math.min(step, n)) {
+                        return -1;
+                    }
+                }
+
+                if (arr[prev] === key) {
+                    return prev;
+                }
+
+                return -1;
+            }
+        });
+    </script>
+</body>
+
+</html>

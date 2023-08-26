@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Binary Search</title>
+</head>
+
+<body>
+    <button id="insertButton">Insert Element</button>
+    <button id="searchButton">Search Element</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const insertButton = document.getElementById("insertButton");
+            const searchButton = document.getElementById("searchButton");
+            const numbers = [];
+
+            insertButton.addEventListener("click", () => {
+                const inputNumber = prompt("Enter a number to insert:");
+                const number = parseInt(inputNumber);
+
+                if (!isNaN(number)) {
+                    numbers.push(number);
+                    numbers.sort((a, b) => a - b); // Sort the array after insertion
+                    alert("Number " + number + " has been inserted.");
+                } else {
+                    alert("Please enter a valid number.");
+                }
+            });
+
+            searchButton.addEventListener("click", () => {
+                const inputNumber = prompt("Enter a number to search:");
+                const number = parseInt(inputNumber);
+
+                if (!isNaN(number)) {
+                    const index = binarySearch(numbers, number);
+
+                    if (index !== -1) {
+                        alert("Number " + number + " found at index " + index);
+                    } else {
+                        alert("Number " + number + " not found.");
+                    }
+                } else {
+                    alert("Please enter a valid number.");
+                }
+            });
+
+            function binarySearch(arr, target) {
+                let left = 0;
+                let right = arr.length - 1;
+
+                while (left <= right) {
+                    const mid = Math.floor((left + right) / 2);
+
+                    if (arr[mid] === target) {
+                        return mid;
+                    } else if (arr[mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+                }
+
+                return -1;
+            }
+        });
+    </script>
+</body>
+
+</html>

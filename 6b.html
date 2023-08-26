@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Examples</title>
+</head>
+
+<body>
+    <button id="clickButton">Click Me</button>
+    <p id="message">Hover over this text</p>
+    <input type="text" id="changeInput" placeholder="Type here">
+    <p id="keydownMessage">Press a key</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const clickButton = document.getElementById("clickButton");
+            const message = document.getElementById("message");
+            const changeInput = document.getElementById("changeInput");
+            const keydownMessage = document.getElementById("keydownMessage");
+
+            clickButton.addEventListener("click", () => {
+                alert("Button Clicked!");
+            });
+
+            message.addEventListener("mouseover", () => {
+                message.textContent = "Mouse Over Event";
+            });
+
+            message.addEventListener("mouseout", () => {
+                message.textContent = "Hover over this text";
+            });
+
+            changeInput.addEventListener("change", () => {
+                alert("Input Changed: " + changeInput.value);
+            });
+
+            document.addEventListener("keydown", (event) => {
+                keydownMessage.textContent = "Key Pressed: " + event.key;
+            });
+        });
+    </script>
+</body>
+
+</html>
